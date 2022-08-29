@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Blastospim series</title>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/jquery-ui.css" />
+  </head>
+
+  <body>
+
+    <p class="info-text" id="info">BlastoSPIM main entry page.</p>
+
+    <img id="top_image" src="./images/segmentation_slide_63.png"/>
+
+    <h1>BlastoSPIM</h1>
+    
+
+    <div id="prologue">
+
+        <p>
+            <a href="series.html" style="color:blue">Preview and download data.</a>
+        </p>
+
+        <p>
+            We introduce a new dataset and model of pre-implantation mouse embryos with 
+            complete 3D instance segmentation of nuclei. This is one of the largest and 
+            most complete datasets of its kind with over 570 high resolution images from 
+            a light sheet microscope. Each image has a resolution of roughly 64x512x512 and 
+            every nucleus in each image is fully annotated in 3D by a series of contours in each slice.
+        </p>
+
+        <p>
+            Using this dataset, we have built a model to accurately perform 3D instance segmentation 
+            and begun several investigations into the quantitative analysis of embryogenesis including 
+            fate specification, nuclear volume and shape variations, and embryo viability. This model 
+            is also the first step in lineage construction and opens 
+            the potential for a more direct exploration into early development.
+        </p>
+
+        <p>
+            Significant progress has been made in providing a means to segment 
+            nuclei in 2D [Cellpose 2.0] but there are very few biological datasets 
+            with complete ground truth instance segmentation of nuclei in 3D. This 
+            dataset can be used to help enable transfer learning 
+            for other applications via pre-training, fine-tuning, simulating, augmenting, evaluating etc.
+        </p>
+
+    </div>
+
+    <h3 class="main_animation_header">Figure 3 placeholder header</h3>
+
+    <div class="main_animation">
+        <img src="./images/figure3.png"/>
+    </div>
+
+    <div class="main_animation_explanation"><p>
+        Oscillation of nuclear size with cell cycle during development. We calculate each
+        nucleus’s volume and its corresponding radius if it were a sphere of that volume. For a
+        single embryo, for which we have annotated ground truth for 89 consecutive timepoints,
+        we plot this effective radius over developmental time, with 15 minutes between each box.
+        The median effective radius rises from about 6 μm at the early 32-cell stage to about 7
+        μm at the late 32-cell stage. During the transition from the 32-cell stage to the 64-cell
+        stage, the width of the radius distribution grows, as some nuclei have divided while
+        others haven’t. Typical nuclear radii fall in the range 6-6.5 μm as the embryo
+        approaches the 64-cell stage.
+    </p></div>
+
+
+    <h3 class="main_animation_header">fucci_SOX_stack1 placeholder header</h3>
+
+    <div class="main_animation">
+        <img src="./movies/fucci_SOX_stack1.gif"/>
+    </div>
+
+    <div class="main_animation_explanation"><p>
+        <em>Placeholder: Explanation of fucci_SOX_stack1 under construction.</em>
+    </p></div>
+
+
+    <h3 class="main_animation_header">GT placeholder header</h3>
+
+    <div class="main_animation">
+        <img src="./movies/GT.gif"/>
+    </div>
+
+    <div class="main_animation_explanation"><p>
+        <em>Placeholder: Explanation of GT under construction.</em>
+    </p></div>
+
+
+    <h3 class="main_animation_header">Sys placeholder header</h3>
+
+    <div class="main_animation">
+        <img src="./movies/Sys.gif"/>
+    </div>
+
+    <div class="main_animation_explanation"><p>
+        <em>Placeholder: Explanation of Sys under construction.</em>
+    </p></div>
+
+    <h2>Segmentation detail visualizations</h2>
+
+    <p>
+        <a href="detail_F24_10.html">
+            <b>F24_10</b>: Discussion under construction.
+        </a>
+    </p>
+    <p>
+        <a href="detail_F24_8.html">
+            <b>F24_8</b>: Discussion under construction.
+        </a>
+    </p>
+    <p>
+        <a href="detail_F39_117.html">
+            <b>F39_117</b>: Discussion under construction.
+        </a>
+    </p>
+    <p>
+        <a href="detail_F49_148.html">
+            <b>F49_148</b>: Discussion under construction.
+        </a>
+    </p>
+    <p>
+        <a href="detail_F55_185.html">
+            <b>F55_185</b>: Discussion under construction.
+        </a>
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Blastospim data download</title>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/jquery-ui.css" />
+  </head>
+
+  <body>
+
+    <p>
+        <a href="./main.html">Return to BlastoSPIM main page.</a>
+    </p>
+
+    <h1>BlastoSPIM: Preview and Download Data Sets</h1>
+    
+
+<p>
+    Lorem ipsum dolor sit amet. Ab inventore fuga est voluptatibus fugit aut nulla fuga quo quod modi et similique repellat! Non placeat commodi ut nobis perspiciatis sed dicta illum sed reiciendis voluptatem ut voluptatibus adipisci cum quis officiis ea rerum soluta? Sed galisum consequatur At saepe reprehenderit aut nulla molestiae. Qui rerum quas qui dolor esse sed accusamus inventore quo deserunt dolorem aut dolore dolore.
+    </p>
+    
+    <p>
+    Id commodi nisi ut quod aperiam et magni sunt aut quae blanditiis in galisum illo aut molestiae saepe. In explicabo eius qui dolores quibusdam et sequi natus.
+    </p>
+    
+    <p><em>
+    Aut officiis maiores nam esse dignissimos eum adipisci quis sed rerum galisum! Est voluptatibus similique quo sequi nesciunt et quod nobis ut magni enim et nobis voluptatibus non voluptas rerum quo ipsam assumenda. Aut tempore blanditiis hic expedita officiis est laboriosam tempore?
+    </em></p>
+
+    <p>
+        <a id="download_model" style="color:blue">Download XYZW model.</a>
+    </p>
+    
+
+    <p class="info-text" id="info">Page not initialized.</p>
+
+    <h1>Series</h1>
+
+    <p>
+        This panel displays the series in the data set
+        with images from an example timestamp.
+    </p>
+
+    <p>
+        Click the series button to display all timestamps for the series.
+    </p>
+
+    <div class="series_select" id="series_select"></div>
+
+    <h1 id="series_header">Timestamps in Series</h1>
+
+    <p>
+        This panel displays the timestamps for the selected series.
+    </p>
+
+    <p>
+        Click on the timestamp button to view the timestamp in detail.
+    </p>
+
+    <div class="series_detail" id="series_detail"></div>
+
+    <h1 id="timestamp_header">Timestamp detail</h1>
+
+    <p>
+        This panel displays details for the selected timestamp.
+        Maximal value projections appear on the left and extruded
+        label segmentation appears on the right.
+    </p>
+
+    <p>
+        Adjust the slider to adjust the maximum vertical layer for 
+        the images.
+    </p>
+
+    <div class="timestamp_detail" id="timestamp_detail"></div>
+
+
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery-ui.js"></script>
+  <script src="./js/canvas_2d_widget_helper.js"></script>
+  <script src="./js/dual_canvas_helper.js"></script>
+  <script src="./js/nd_frame.js"></script>
+  <script src="./js/layers3d.js"></script>
+  <script src="./series.js"></script>
+  <script>
+    setup();
+  </script>
+</body>
+</html>

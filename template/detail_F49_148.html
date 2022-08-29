@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Segmentation detail page</title>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+  </head>
+
+  <body class="container" style="margin: 40px;">
+
+    <h2 id="main_header">Segmentation detail page</h2>
+
+ 
+    <p>
+        This page shows nuclear segmentation data with a 3D view.
+    </p>
+
+    <p id="info">Page not initialized.</p>
+
+    <p>
+        The rectangles below display maximum intensity microscopy data on the left and 
+        extruded segmentation data on the right.  
+    </p>
+    <p>
+        Adjust the vertical slider to change
+        the maximum vertical layer.
+    </p>
+
+    <div id="volumes">Volumes not yet loaded.</div>
+
+    <p>
+        The area below shows the segmentation data presented as 3D volumes.
+    </p>
+    <p>
+        Drag over the graphic to rotate the model.
+    </p>
+    <p>
+        Adjust the horizontal slider to change the opacity.
+    </p>
+
+    <div id="surfaces">Surfaces not yet loaded. </div>
+
+    <script src="js/three.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/surfaces_sequence.js"></script>
+    <script src="./js/layers3d.js"></script>
+    <script src="./series.js"></script>
+    <script src="./load_surface_json.js"></script>
+    <script>
+      //load_file("json/Fake.json")
+      var info = $("#info");
+      info.html("javascript loaded.");
+      load_surfaces("json/F49_148.json", "F49", 148);
+    </script>
+
+<p>
+    <a href="./main.html">Return to BlastoSPIM main page.</a>
+</p>
+
+
+  </body>
+</html>
