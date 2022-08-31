@@ -20,6 +20,9 @@ from scipy.ndimage import gaussian_filter
 import json
 import shutil
 
+# pseudocolor flag
+PSEUDOCOLOR = True
+
 def run():
     import sys
     try:
@@ -185,7 +188,11 @@ class TimeStamp:
         bint = mint
         mint256 = scale256(bint)
         ifn = os.path.join(ts_folder, "max_intensity_image.png")
-        imsave(ifn, mint256)
+        if not PSEUDOCOLOR:
+            imsave(ifn, mint256)
+        else:
+            pint256 = pseudo_colorize(mint256)
+            imsave(ifn, pint256)
         self.max_intensity_path = ifn
         # save extruded volume binary
         colorized = colorize_array(evolume)
@@ -196,7 +203,11 @@ class TimeStamp:
         #bvol = blur(mvolume)
         mvfn = os.path.join(ts_folder, "max_intensity_volume.bin")
         mvol256 = scale256(mvolume)
-        save_binary(mvol256, mvfn)
+        if not PSEUDOCOLOR:
+            save_binary(mvol256, mvfn)
+        else:
+            pvol256 = pseudo_colorize(mvol256)
+            save_binary(pvol256, mvfn)
         self.max_intensity_volume = mvfn
 
     def json_manifest(self):
@@ -301,6 +312,51 @@ def slice3(M, s):
     jm, jM = s[1]
     km, kM = s[2]
     return M[im:iM, jm:jM, km:kM]
+
+# pseudocolor support
+h = 255
+white = [h, h, h]
+yellow = [h, h, 0]
+magenta = [h, 0, h]
+magenta = [h, h//2, h] # lighter magenta to avoid blue streak
+red = [h, 0, 0]
+cyan = [0, h, h]
+green = [0, h, 0]
+blue = [0, 0, h]
+black = [0, 0, 0]
+
+interpolator = np.array([
+    black,
+    blue,
+    green,
+    cyan,
+    magenta,
+    red,
+    yellow,
+    white,
+])
+
+def interpolate255(i, interpolator=interpolator):
+    assert i >= 0 and i <= 255
+    nint = len(interpolator)
+    lam = i * 1.0/255.0
+    if lam == 1:
+        return interpolator[-1].astype(np.int)
+    ir = (nint - 1) * lam
+    i0 = int(ir)
+    i1 = i0 + 1
+    if i1 >= nint:
+        return interpolator[-1].astype(np.int)
+    delta = ir - i0
+    e0 = interpolator[i0]
+    e1 = interpolator[i1]
+    cr = (1 - delta) * e0 + delta * e1
+    return cr.astype(np.int)
+
+pseudo_color_mapping = np.array([interpolate255(i) for i in range(256)]).astype(np.ubyte)
+
+def pseudo_colorize(a):
+    return colorize_array(a, pseudo_color_mapping)
 
 if __name__=="__main__":
     run()
