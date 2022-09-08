@@ -231,7 +231,7 @@ class TimeStamp:
         files = glob.glob(glob_pattern)
         assert len(files) == 1, "should have one file: " + repr((glob_pattern, files, self))
         [fn] = files
-        labels = np.load(fn)
+        labels = np.load(fn, allow_pickle=True)
         return labels
 
     def img_array(self):
