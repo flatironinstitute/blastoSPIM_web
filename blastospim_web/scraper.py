@@ -240,7 +240,7 @@ class TimeStamp:
         files = glob.glob(glob_pattern)
         assert len(files) == 1, "should have one file: " + repr((glob_pattern, files, self))
         [fn] = files
-        img = np.load(fn)
+        img = np.load(fn, allow_pickle=True)
         return img
 
 def extrude_labels(labels_array):
