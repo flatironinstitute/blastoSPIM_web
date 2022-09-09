@@ -121,10 +121,34 @@ def max_value_projection(filename, pseudocolor=True):
         timg = simg[:, ::stride, ::stride]
     return RotationProjection3d(timg, pseudocolor)
 
+def extruded_labels(filename):
+    D = np.load(filename, allow_pickle=True)
+    #img = D["img"]
+    labels = D["labels"]
+    slicing = scraper.positive_slicing(labels)
+    simg = scraper.slice3(labels, slicing)
+    [I, J, K] = simg.shape
+    m = min(J, K)
+    timg = simg
+    if I < m:
+        stride = int(m / I)
+        timg = simg[:, ::stride, ::stride]
+    return RotationProjection3d(timg, extruded=True, pseudocolor=False)
+
+def extrude0(labels_array):
+    "extrude values along axis 0"
+    extruded = labels_array[0].copy()
+    for labelsi in labels_array:
+        nz = (labelsi > 0)
+        extruded = np.choose(nz, [extruded, labelsi])
+        #volume[i] = extruded
+    return extruded
+
 class RotationProjection3d:
     
-    def __init__(self, arr3d, pseudocolor=False):
+    def __init__(self, arr3d, pseudocolor=False, extruded=False):
         self.pseudocolor = pseudocolor
+        self.extruded = extruded
         self.arr3d = arr3d
         # larger array for rotation...
         (I, J, K) = arr3d.shape
@@ -165,13 +189,19 @@ class RotationProjection3d:
         theta = self.theta_slider.value
         phi = self.phi_slider.value
         rotated = self.rotate(theta, phi)
-        projected = rotated.max(axis=0)
+        if self.extruded:
+            projected = extrude0(rotated)
+        else:
+            # default max value projection
+            projected = rotated.max(axis=0)
         #M = projected.max()
         #scale = 255.0 / M
         #scaled = (projected * scale).astype(np.ubyte)
-        p256 = scraper.scale256(projected)
-        scaled = p256
+        if self.extruded:
+            scaled = scraper.colorize_array(projected)
         if self.pseudocolor:
+            p256 = scraper.scale256(projected)
+            scaled = p256
             scaled = scraper.pseudo_colorize(p256)
         #print("scaled", scaled.shape, scaled.min(), scaled.max())
         self.image.change_array(scaled)
