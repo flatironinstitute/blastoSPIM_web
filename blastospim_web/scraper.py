@@ -21,7 +21,7 @@ import json
 import shutil
 
 # pseudocolor flag
-PSEUDOCOLOR = True
+PSEUDOCOLOR = False
 
 def run():
     import sys

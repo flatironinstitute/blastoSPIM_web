@@ -1,4 +1,4 @@
-from readline import set_pre_input_hook
+
 import numpy as np
 import math
 from H5Gizmos import Stack, Slider, Image
