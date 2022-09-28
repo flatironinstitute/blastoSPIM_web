@@ -186,7 +186,8 @@ class TimeStamp:
         (mint, mvolume) = max_intensity(bsimg)
         #bint = blur(mint)
         bint = mint
-        mint256 = scale256(bint)
+        #mint256 = scale256(bint)
+        mint256 = enhance_contrast(bint)
         ifn = os.path.join(ts_folder, "max_intensity_image.png")
         if not PSEUDOCOLOR:
             imsave(ifn, mint256)
@@ -202,7 +203,11 @@ class TimeStamp:
         # save max intensity volume
         #bvol = blur(mvolume)
         mvfn = os.path.join(ts_folder, "max_intensity_volume.bin")
-        mvol256 = scale256(mvolume)
+        #mvol256 = scale256(mvolume)
+        # enhance contrast for each layer of mvolume independently
+        mvol256 = np.zeros(mvolume.shape, dtype=np.ubyte)
+        for i in range(len(mvolume)):
+            mvol256[i] = enhance_contrast(mvolume[i])
         if not PSEUDOCOLOR:
             save_binary(mvol256, mvfn)
         else:
