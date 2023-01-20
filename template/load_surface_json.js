@@ -9,6 +9,73 @@ var series_json_data = null;
 var focus_series = null;
 var focus_timestamp = null;
 
+var datasets = [
+    {
+        json: "json/F24_8.json",
+        id: "F24_8",
+        series: "F24",
+        timestamp: "8",
+        description: "8 nucleus stage",
+    },
+    {
+        json: "json/F24_10.json",
+        id: "F24_10",
+        series: "F24",
+        timestamp: "10",
+        description: "8 nucleus stage",
+    },
+    {
+        json: "json/F39_117.json",
+        id: "F39_117",
+        series: "F39",
+        timestamp: "117",
+        description: "32 nucleus stage",
+    },
+    {
+        json: "json/F49_148.json",
+        id: "F49_148",
+        series: "F49",
+        timestamp: "149",
+        description: "64 nucleus stage",
+    },
+    {
+        json: "json/F55_185.json",
+        id: "F55_185",
+        series: "F55",
+        timestamp: "185",
+        description: "128 nucleus stage",
+    },
+];
+
+function load_segmentations() {
+    var segmentation = $("#segmentation");
+    segmentation.empty();
+    var select = $("<select/>").appendTo(segmentation);
+    for (var info of datasets) {
+        $(`<option value="${info.id}">${info.id}: ${info.description}</option>`).appendTo(select);
+    }
+    var select_change = function () {
+        var val = select.find(":selected").val();
+        load_id(val);
+    };
+    select.on("change", select_change)
+};
+
+function load_id(data_id) {
+    var info = null;
+    for (var test_info of datasets) {
+        if (test_info.id == data_id) {
+            info = test_info
+        }
+    }
+    if (!info) {
+        throw new Error("id not found: " + data_id);
+    }
+    var header = $("#main_header");
+    header.html(info.id + " :: " + info.description);
+    load_surfaces(info.json, info.series, info.timestamp);
+};
+
 function load_surfaces(file_path, series, timestamp) {
     focus_series = series;
     focus_timestamp = timestamp;
