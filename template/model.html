@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Robust 3D Nuclear Instance Segmentation of the Early Mouse Embryo</title>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/jquery-ui.css" />  
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+  </head>
+
+  <body>
+    <p class="info-text" id="info">BlastoSPIM models page.</p>
+
+    <h1 style="margin:10px; text-align: center;">
+        BlastoSPIM Models
+    </h1>
+
+    <table style="border-collapse: separate; border-spacing: 5px 5px;">
+        <tr>
+            <th>
+                <a href="BROKEN_LINK">
+                    Early stage 3D Stardist model (8 to 64 nuclei).
+                </a>
+            </th>
+            <th>
+                <a href="BROKEN_LINK">
+                    Late stage 3D Stardist model (64 to 128 nuclei.
+                </a>
+            </th>
+        </tr>
+    </table>
+    
+
+    <div id="prologue">
+
+        <p>
+            We evaluated five neural network architectures to determine how to obtain the 
+            best instance segmentation on our dataset.
+        </p>
+
+        <img src="Figure1.png" width="70%">
+
+        <p>
+            <b>Fig 1. Segmentation tasks applied to images of a pastoral scene [1] and of a mouse embryo. </b>
+            (A) Raw image to be segmented. From top to bottom, an image of cows in a pasture, 
+            maximum intensity projections of 3D image of 16-cell mouse embryo, a z-slice from the 3D image. 
+            3D image has dimensions (83.4 μm, 83.4 μm, 68 μm). Scale bar: 10 μm. (B) Semantic segmentation for images in 
+            (A). (C) Object detection for images in (A). 
+            (D) Instance segmentation for images in (A).
+        </p>
+
+        <p>
+            The results of the evaluation are summarized in the table below.
+        </p>
+
+        <img src="Table1.png" width="70%">
+
+        <p>
+            <b>Table 1. Performance Results on High SNR Images Per Developmental Stage for 5 Methods. </b>
+            Each network was trained on 482 3D images, and was subsequently applied to a test set 
+            of high SNR images (x images, xx nuclei). For 8-cell to 64-cell stages model 
+            hyperparameters were not adjusted. For the latest stage (> 100-cell), the probability threshold – 
+            used to define instances – was tuned to independently optimize each method’s performance.
+        </p>
+
+        <p>
+            The model with the best performance was a 3D Stardist
+            <a href="https://arxiv.org/abs/1908.03636">https://arxiv.org/abs/1908.03636</a>.
+        </p>
+
+</body>
+</html>
