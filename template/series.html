@@ -7,15 +7,47 @@
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/jquery-ui.css" />
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery-ui.js"></script>
   </head>
 
   <body>
+    <p class="info-text" id="info">Blastospim data download.</p>
+
+    <ul id="menu">
+        <li><div>Menu</div>
+            <ul>
+                <li><div>
+                    <a href="./main.html">Home</a>
+                </div></li>
+                <li><div>
+                    <a href="./series.html">Dataset</a>
+                </div></li>
+                <li><div>
+                    <a href="./model.html">Model</a>
+                </div></li>
+                <li><div>
+                    <a href="./vis.html">Visualizations</a>
+                </div></li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        $( function() {
+          $( "#menu" ).menu();
+        } );
+    </script>
+    <style>
+        .ui-menu { width: 200px; }
+    </style>
+
 
     <p>
         <a href="./main.html">Return to BlastoSPIM main page.</a>
     </p>
 
-    <h1>Preview and Download BlastoSPIM Data Sets</h1>
+    <h1 style="margin:10px; text-align: center;">Preview and Download BlastoSPIM Data Sets</h1>
     
     <p>
         The BlastoSPIM dataset includes 573 fully annotated 3D images 
@@ -27,12 +59,11 @@
         time-lapse annotations extend from the 16-cell stage to the approximately 64-cell stage. 
         The total number of distinct embryos imaged and annotated is 31.
     </p>
+<!--
     <p>
         <a id="download_model" style="color:blue">Download XYZW model.</a>
     </p>
-    
-
-    <p class="info-text" id="info">Page not initialized.</p>
+-->
 
     <h1>Series</h1>
 
