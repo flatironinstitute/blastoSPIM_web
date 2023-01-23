@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Segmentation detail page</title>
+    <title>BlastoSPIM web site visualization page</title>
     <meta charset="utf-8" />
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans"
@@ -10,11 +10,42 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/jquery-ui.css" />
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery-ui.js"></script>
   </head>
 
   <body class="container" style="margin: 40px;">
+    <p class="info-text">BlastoSPIM web site visualization page.</p>
 
-    <h2>Select segmentation.</h2>
+    <ul id="menu">
+        <li><div>Menu</div>
+            <ul>
+                <li><div>
+                    <a href="./main.html">Home</a>
+                </div></li>
+                <li><div>
+                    <a href="./series.html">Dataset</a>
+                </div></li>
+                <li><div>
+                    <a href="./model.html">Model</a>
+                </div></li>
+                <li><div>
+                    <a href="./vis.html">Visualizations</a>
+                </div></li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        $( function() {
+          $( "#menu" ).menu();
+        } );
+    </script>
+    <style>
+        .ui-menu { width: 200px; }
+    </style>
+
+    <h3 style="margin:10px;">Select segmentation.</h3>
 
     <div id="segmentation"></div>
 
@@ -24,8 +55,6 @@
     <p>
         This page shows nuclear segmentation data with a 3D view.
     </p>
-
-    <p id="info">Page not initialized.</p>
 
     <p>
         The rectangles below display maximum intensity microscopy data on the left and 
@@ -50,6 +79,8 @@
 
     <div id="surfaces">Surfaces not yet loaded. </div>
 
+    <p id="info">Page not initialized.</p>
+
     <script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
     <script src="js/jquery.min.js"></script>
@@ -60,15 +91,13 @@
     <script src="./load_surface_json.js"></script>
     <script>
       //load_file("json/Fake.json")
+      debugger;
       var info = $("#info");
       info.html("javascript loaded.");
       //load_surfaces("json/F55_185.json", "F55", 185);
       load_segmentations();
       load_id("F24_8");
     </script>
-  <p>
-    <a href="./main.html">Return to BlastoSPIM main page.</a>
-</p>
 
 
   </body>
