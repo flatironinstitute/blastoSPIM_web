@@ -12,7 +12,36 @@
   </head>
 
   <body>
-    <p class="info-text" id="info">BlastoSPIM models page.</p>
+    <p class="info-text">BlastoSPIM models page.</p>
+
+    <ul id="menu">
+        <li><div>Menu</div>
+            <ul>
+                <li><div>
+                    <a href="./main.html">Home</a>
+                </div></li>
+                <li><div>
+                    <a href="./series.html">Dataset</a>
+                </div></li>
+                <li><div>
+                    <a href="./model.html">Model</a>
+                </div></li>
+                <li><div>
+                    <a href="./vis.html">Visualizations</a>
+                </div></li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        $( function() {
+          $( "#menu" ).menu();
+        } );
+    </script>
+    <style>
+        .ui-menu { width: 200px; }
+    </style>
+
 
     <h1 style="margin:10px; text-align: center;">
         BlastoSPIM Models
