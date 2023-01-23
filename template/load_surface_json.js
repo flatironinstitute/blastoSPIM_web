@@ -35,7 +35,7 @@ var datasets = [
         json: "json/F49_148.json",
         id: "F49_148",
         series: "F49",
-        timestamp: "149",
+        timestamp: "8",
         description: "64 nucleus stage",
     },
     {
