@@ -1,104 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+  flatironinstitute.org
+  -->
+<html>
   <head>
-    <title>Robust 3D Nuclear Instance Segmentation of the Early Mouse Embryo</title>
+    <!-- TODO: Add your name -->
+    <title>Models: Robust 3D Nuclear Instance Segmentation of the Early Mouse Embryo</title>
     <meta charset="utf-8" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/jquery-ui.css" />  
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/jquery-ui.js"></script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <!-- TODO: If you wish to use your center color scheme, please replace main.css with the center acronymn ex:
+      cca.css, ccb.css, etc
+    -->
+    <link rel="stylesheet" href="assets/css/main.css" />
   </head>
+  <body class="is-preload">
+    <!-- Header -->
+    <header id="header">
+      <div class="inner">
+        <!-- TODO: Add a personal photo in /images folder or switch src link to avatar.jpg for a gray circle -->
+        <a href="#" class="image avatar"
+          ><img src="./movies/fucci_SOX_stack1.gif" width="300px"/></a>
+      </div>
+      <nav id="nav">
+        <ul>
+          <li>
+            <a
+              href="index1.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="./series.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Data</a
+            >
+          </li>
+          <li>
+            <a
+              href="./model.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Models</a
+            >
+          </li>
+          <li>
+            <a
+              href="./vis.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Visualizations</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Main -->
+    <div id="main">
+      <!-- About -->
+      <section id="about">
 
-  <body>
-    <p class="info-text">BlastoSPIM models page.</p>
+        <h1 style="margin:10px; text-align: center;">
+          BlastoSPIM Models
+        </h1>
+        
+      </section>
+      <!-- Research -->
+      <section id="research">
+        <!-- TODO: Replace with project info and choose image type -->
+        <div class="row">
 
-    <ul id="menu">
-        <li><div>Menu</div>
-            <ul>
-                <li><div>
-                    <a href="./main.html">Home</a>
-                </div></li>
-                <li><div>
-                    <a href="./series.html">Dataset</a>
-                </div></li>
-                <li><div>
-                    <a href="./model.html">Model</a>
-                </div></li>
-                <li><div>
-                    <a href="./vis.html">Visualizations</a>
-                </div></li>
+          <!-- ground truth -->
+          <article class="col-6 col-12-xsmall work-item">
+            <p>
+              We evaluated five neural network architectures to determine how to obtain the 
+              best instance segmentation on our dataset.
+              The results of the evaluation are summarized in the table to the right.
+            </p>
+
+            <p>
+              Click the image for a detailed view.
+            </p>
+
+
+            <p>
+              The model with the best performance was 3D Stardist
+              <a href="https://arxiv.org/abs/1908.03636">https://arxiv.org/abs/1908.03636</a>.
+            </p>
+          </article>
+          <article class="col-6 col-12-xsmall work-item">
+            <a href="Table1.png" class="image fit thumb">
+              <!-- TODOL Add alt text for popup caption. -->
+              <img src="Table1.png" alt="Model comparison table."/>
+            </a>
+          </article>
+
+        </section>
+        
+      <!-- Contact -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="row">
+          <div class="col-6 col-12-small">
+            <ul class="labeled-icons">
+              <li>
+                <h3 class="icon solid fa-home">
+                  <span class="label">Address</span>
+                </h3>
+                <a href="http://flatironinstitute.org">Flatiron Institute</a
+                ><br />
+                162 Fifth Avenue<br />
+                New York, NY 10010<br />
+                United States
+              </li>
+              <li>
+                <h3 class="icon solid fa-envelope">
+                  <span class="label">Email</span>
+                </h3>
+                <!-- TODO: Add email -->
+                <a href="mailto:USER_EMAIL"
+                  >hnunley at flatironinstitute.org.</a
+                >
+              </li>
             </ul>
-        </li>
-    </ul>
-
-    <script>
-        $( function() {
-          $( "#menu" ).menu();
-        } );
-    </script>
-    <style>
-        .ui-menu { width: 200px; }
-    </style>
-
-
-    <h1 style="margin:10px; text-align: center;">
-        BlastoSPIM Models
-    </h1>
-
-    <table border style="border-collapse: separate; border-spacing: 25px 5px;">
-        <tr>
-            <th>
-                <a href="BROKEN_LINK">
-                    Early stage 3D Stardist model (8 to 64 nuclei).
-                </a>
-            </th>
-            <th>
-                <a href="BROKEN_LINK">
-                    Late stage 3D Stardist model (64 to 128 nuclei).
-                </a>
-            </th>
-        </tr>
-    </table>
-    
-
-    <div id="prologue">
-
-        <p>
-            We evaluated five neural network architectures to determine how to obtain the 
-            best instance segmentation on our dataset.
-        </p>
-
-        <img src="Figure1.png" width="70%">
-
-        <p>
-            <b>Fig 1. Segmentation tasks applied to images of a pastoral scene [1] and of a mouse embryo. </b>
-            (A) Raw image to be segmented. From top to bottom, an image of cows in a pasture, 
-            maximum intensity projections of 3D image of 16-cell mouse embryo, a z-slice from the 3D image. 
-            3D image has dimensions (83.4 μm, 83.4 μm, 68 μm). Scale bar: 10 μm. (B) Semantic segmentation for images in 
-            (A). (C) Object detection for images in (A). 
-            (D) Instance segmentation for images in (A).
-        </p>
-
-        <p>
-            The results of the evaluation are summarized in the table below.
-        </p>
-
-        <img src="Table1.png" width="70%">
-
-        <p>
-            <b>Table 1. Performance Results on High SNR Images Per Developmental Stage for 5 Methods. </b>
-            Each network was trained on 482 3D images, and was subsequently applied to a test set 
-            of high SNR images (x images, xx nuclei). For 8-cell to 64-cell stages model 
-            hyperparameters were not adjusted. For the latest stage (> 100-cell), the probability threshold – 
-            used to define instances – was tuned to independently optimize each method’s performance.
-        </p>
-
-        <p>
-            The model with the best performance was 3D Stardist
-            <a href="https://arxiv.org/abs/1908.03636">https://arxiv.org/abs/1908.03636</a>.
-        </p>
-
-</body>
+            <ul class="icons">
+              <!-- TODO: Add your social media handles here -->
+              <!-- Other icons are available here: https://fontawesome.com/v4.7/icons/ just change the fa-tag -->
+              <li>
+                <a href="#" class="icon brands fa-twitter"
+                  ><span class="label">Twitter</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-github"
+                  ><span class="label">Github</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-instagram"
+                  ><span class="label">Instagram</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-facebook"
+                  ><span class="label">Facebook</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-vimeo"
+                  ><span class="label">Vimeo</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <a
+          href="https://www.simonsfoundation.org/flatiron/"
+          class="image logo"
+          target="_blank"
+          id="logo"
+          rel="noreferrer noopener"
+        >
+          <img src="images/logo.svg" alt="logo" id="logo-icon" />
+        </a>
+      </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.poptrox.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- TODO: Remove if not using Mathjax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </body>
 </html>
