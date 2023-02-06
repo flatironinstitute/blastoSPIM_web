@@ -1,76 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+  flatironinstitute.org
+  -->
+<html>
   <head>
-    <title>BlastoSPIM web site visualization page</title>
+    <!-- TODO: Add your name -->
+    <title>Visualizations: Robust 3D Nuclear Instance Segmentation of the Early Mouse Embryo</title>
     <meta charset="utf-8" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans"
-      rel="stylesheet"
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
     />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/jquery-ui.css" />
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/jquery-ui.js"></script>
+    <!-- TODO: If you wish to use your center color scheme, please replace main.css with the center acronymn ex:
+      cca.css, ccb.css, etc
+    -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="./css/jquery-ui.css" />
   </head>
+  <body class="is-preload">
+    <!-- Header -->
+    <header id="header">
+      <div class="inner">
+        <!-- TODO: Add a personal photo in /images folder or switch src link to avatar.jpg for a gray circle -->
+        <a href="#" class="image avatar"
+          ><img src="./movies/fucci_SOX_stack1.gif" width="300px"/></a>
+      </div>
+      <nav id="nav">
+        <ul>
+          <li>
+            <a
+              href="index1.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="./series.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Data</a
+            >
+          </li>
+          <li>
+            <a
+              href="./model.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Models</a
+            >
+          </li>
+          <li>
+            <a
+              href="./vis.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Visualizations</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Main -->
+    <div id="main">
+      <!-- About -->
+      <section id="about">
 
-  <body class="container" style="margin: 40px;">
-    <p class="info-text">BlastoSPIM web site visualization page.</p>
+        <h1 style="margin:10px; text-align: center;">
+          Detailed example visualizations for sample data sets
+        </h1>
+        <p>
+          This page displays 2d and 3d interactive models for selected time stamps.
+      </p>
 
-    <ul id="menu">
-        <li><div>Menu</div>
-            <ul>
-                <li><div>
-                    <a href="./main.html">Home</a>
-                </div></li>
-                <li><div>
-                    <a href="./series.html">Dataset</a>
-                </div></li>
-                <li><div>
-                    <a href="./model.html">Model</a>
-                </div></li>
-                <li><div>
-                    <a href="./vis.html">Visualizations</a>
-                </div></li>
-            </ul>
-        </li>
-    </ul>
+      </section>
 
-    <script>
-        $( function() {
-          $( "#menu" ).menu();
-        } );
-    </script>
-    <style>
-        .ui-menu { width: 200px; }
-    </style>
+      <section>
+        
+        <article class="col-12 col-12-xsmall work-item">
 
-    <h3 style="margin:10px;">Select segmentation.</h3>
+          <h1>Select Segmentation</h1>
 
-    <div id="segmentation"></div>
+          <p>
+              Select segmentation from the dropdown list below.
+          </p>
+      
+          <div id="segmentation"></div>
 
-    <h2 id="main_header" style="margin:10px; text-align: center;">Segmentation detail page</h2>
+        </article>
+        
+    </section>
 
- 
-    <p>
-        This page shows nuclear segmentation data with a 3D view.
-    </p>
+    <section>
+      
+      <article class="col-12 col-12-xsmall work-item">
+  
+  
+        <h1 id="timestamp_header">Segmented Timestamp detail</h1>
+  
+        <p>
+            This panel displays 2d projections for  selected timestamp.
+            Maximal value projections appear on the left and extruded
+            label segmentation appears on the right.
+        </p>
+    
+        <p>
+            Adjust the slider to adjust the maximum vertical layer for 
+            the images.
+        </p>
+    
+        <div id="volumes">Volumes not yet loaded.</div>
+      
+      </article>
+      
+  </section>
+  <section>
+      
+    <article class="col-12 col-12-xsmall work-item">
 
-    <p>
-        The rectangles below display maximum intensity microscopy data on the left and 
-        extruded segmentation data on the right.  
-    </p>
-    <p>
-        Adjust the vertical slider to change
-        the maximum vertical layer.
-    </p>
 
-    <div id="volumes">Volumes not yet loaded.</div>
+      <h1 id="timestamp_header">3D Segmentation detail</h1>
 
-    <p>
-        The area below shows the segmentation data presented as 3D volumes.
-    </p>
-    <p>
+      <p>
         Drag over the graphic to rotate the model.
     </p>
     <p>
@@ -78,27 +133,119 @@
     </p>
 
     <div id="surfaces">Surfaces not yet loaded. </div>
+    
+    </article>
+    
+</section>
 
-    <p id="info">Page not initialized.</p>
+
+      <!-- Contact -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="row">
+          <div class="col-6 col-12-small">
+            <ul class="labeled-icons">
+              <li>
+                <h3 class="icon solid fa-home">
+                  <span class="label">Address</span>
+                </h3>
+                <a href="http://flatironinstitute.org">Flatiron Institute</a
+                ><br />
+                162 Fifth Avenue<br />
+                New York, NY 10010<br />
+                United States
+              </li>
+              <li>
+                <h3 class="icon solid fa-envelope">
+                  <span class="label">Email</span>
+                </h3>
+                <!-- TODO: Add email -->
+                <a href="mailto:USER_EMAIL"
+                  >hnunley at flatironinstitute.org.</a
+                >
+              </li>
+            </ul>
+            <ul class="icons">
+              <!-- TODO: Add your social media handles here -->
+              <!-- Other icons are available here: https://fontawesome.com/v4.7/icons/ just change the fa-tag -->
+              <li>
+                <a href="#" class="icon brands fa-twitter"
+                  ><span class="label">Twitter</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-github"
+                  ><span class="label">Github</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-instagram"
+                  ><span class="label">Instagram</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-facebook"
+                  ><span class="label">Facebook</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-vimeo"
+                  ><span class="label">Vimeo</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Footer -->
+    <footer id="footer">
+      <p id="info">Page not initialized.</p>
+      <div class="inner">
+        <a
+          href="https://www.simonsfoundation.org/flatiron/"
+          class="image logo"
+          target="_blank"
+          id="logo"
+          rel="noreferrer noopener"
+        >
+          <img src="images/logo.svg" alt="logo" id="logo-icon" />
+        </a>
+      </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.poptrox.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- TODO: Remove if not using Mathjax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
 
     <script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
-    <script src="js/jquery.min.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
     <script src="js/jquery-ui.js"></script>
     <script src="js/surfaces_sequence.js"></script>
     <script src="./js/layers3d.js"></script>
     <script src="./series.js"></script>
     <script src="./load_surface_json.js"></script>
-    <script>
-      //load_file("json/Fake.json")
-      debugger;
-      var info = $("#info");
-      info.html("javascript loaded.");
-      //load_surfaces("json/F55_185.json", "F55", 185);
-      load_segmentations();
-      load_id("F24_8");
-    </script>
-
-
+  <script>
+    //load_file("json/Fake.json")
+    debugger;
+    var info = $("#info");
+    info.html("javascript loaded.");
+    //load_surfaces("json/F55_185.json", "F55", 185);
+    load_segmentations();
+    load_id("F24_8");
+  </script>
   </body>
 </html>
