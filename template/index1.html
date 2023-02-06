@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!--
+  flatironinstitute.org
+  -->
+<html>
+  <head>
+    <!-- TODO: Add your name -->
+    <title>Home: Robust 3D Nuclear Instance Segmentation of the Early Mouse Embryo</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <!-- TODO: If you wish to use your center color scheme, please replace main.css with the center acronymn ex:
+      cca.css, ccb.css, etc
+    -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body class="is-preload">
+    <!-- Header -->
+    <header id="header">
+      <div class="inner">
+        <!-- TODO: Add a personal photo in /images folder or switch src link to avatar.jpg for a gray circle -->
+        <a href="#" class="image avatar"
+          ><img src="./movies/fucci_SOX_stack1.gif" width="300px"/></a>
+      </div>
+      <nav id="nav">
+        <ul>
+          <li>
+            <a
+              href="index1.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="./series.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Data</a
+            >
+          </li>
+          <li>
+            <a
+              href="./model.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Models</a
+            >
+          </li>
+          <li>
+            <a
+              href="./vis.html"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Visualizations</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Main -->
+    <div id="main">
+      <!-- About -->
+      <section id="about">
+
+        <h1 style="margin:10px; text-align: center;">
+          Robust 3D Nuclear Instance Segmentation of the Early Mouse Embryo
+        </h1>
+        <p>
+          We introduce a new dataset and model of pre-implantation mouse embryos with 
+          complete 3D instance segmentation of nuclei. This is one of the largest and 
+          most complete datasets of its kind with over 570 high resolution images from 
+          a light sheet microscope. Each image has a resolution of roughly 64x512x512 and 
+          every nucleus in each image is fully annotated in 3D by a series of contours in each slice.
+      </p>
+
+      <p>
+          Using this dataset, we have built a model to accurately perform 3D instance segmentation 
+          and begun several investigations into the quantitative analysis of embryogenesis including 
+          fate specification, nuclear volume and shape variations, and embryo viability. This model 
+          is also the first step in lineage construction and opens 
+          the potential for a more direct exploration into early development.
+      </p>
+
+      <p>
+          Significant progress has been made in providing a means to segment 
+          nuclei in 2D [Cellpose 2.0] but there are very few biological datasets 
+          with complete ground truth instance segmentation of nuclei in 3D. This 
+          dataset can be used to help enable transfer learning 
+          for other applications via pre-training, fine-tuning, simulating, augmenting, evaluating etc.
+      </p>
+
+      <p>
+          <a href="series.html" style="color:blue">Preview and download data.</a>
+      </p>
+
+      </section>
+      <!-- Research -->
+      <section id="research">
+        <!-- TODO: Replace with project info and choose image type -->
+        <div class="row">
+
+          <!-- ground truth -->
+          <article class="col-6 col-12-xsmall work-item">
+            <h3>Ground truth</h3>
+            <p>
+              This animation shows ground truth segmentation of nuclei in a late blastocyst embryo.
+              The segmentation was determined by trained biologists using manual annotation.
+            </p>
+
+            <p>
+              Click the image for a detailed view.
+            </p>
+          </article>
+          <article class="col-6 col-12-xsmall work-item">
+            <a href="./movies/GT.gif" class="image fit thumb">
+              <!-- TODOL Add alt text for popup caption. -->
+              <img src="./movies/GT.gif" alt="Ground truth segmentation of nuclei in late blastocyst embryo."/>
+            </a>
+          </article>
+          
+          <!-- Automatic segmentation -->
+          <article class="col-6 col-12-xsmall work-item">
+            <h3>Automatic segmentation</h3>
+            <p>
+              This animation shows automatically derived segmentation of nuclei in a late blastocyst embryo.
+              This segmentation was derived using machine learning and computer vision methods.
+            </p>
+            <p>
+              Click the image for a detailed view.
+            </p>
+          </article>
+          <article class="col-6 col-12-xsmall work-item">
+            <a href="./movies/Sys.gif" class="image fit thumb">
+              <!-- TODOL Add alt text for popup caption. -->
+              <img src="./movies/Sys.gif" alt="Automatic segmentation segmentation of nuclei in late blastocyst embryo."/>
+            </a>
+          </article>
+          
+          <!-- Source data -->
+          <article class="col-6 col-12-xsmall work-item">
+            <h3>Microscopy source data</h3>
+            <p>
+              This animation shows a time lapse sequence of 
+              3 dimensional image volumes representing
+              the nuclei in an early mouse embryo as acquired using a light-sheet microscope every 15 minutes,
+              shown in maximum intensity projection.
+            </p>
+            <p>
+              Click the image for a detailed view.
+            </p>
+          </article>
+          <article class="col-6 col-12-xsmall work-item">
+            <a href="./movies/fucci_SOX_stack1.gif" class="image fit thumb">
+              <!-- TODOL Add alt text for popup caption. -->
+              <img src="./movies/fucci_SOX_stack1.gif" alt="Time lapse sequence of the nuclei in the early mouse embryo"/>
+            </a>
+          </article>
+
+        </section>
+        <section>
+          <article class="col-12 col-12-xsmall work-item">
+            <h3>Paper</h3>
+            <h4><em>
+              "A novel ground truth dataset enables robust 3D nuclear instance segmentation in early mouse embryos"
+              </em></h4>
+            
+        <p>
+          Hayden Nunley, Binglun Shao,Prateek Grover, Jaspreet Singh,
+          Bradley Joyce, Rebecca Kim-Yip, Abraham Kohrman, Aaron Watters,
+          Zsombor Gal, Alison Kickuth, Madeleine Chalifoux,
+          Stanislav Shvartsman, Eszter Posfai, Lisa M. Brown
+          </p>
+          
+          <p>
+          Center for Computational Biology, Flatiron Institute - Simons Foundation, New York, United States of America<br/>
+          Department of Chemical and Biological Engineering, Princeton University, Princeton, New Jersey, United States of America<br/>
+          Department of Molecular Biology, Princeton University, Princeton, New Jersey, United States of America<br/>
+          The Lewis-Sigler Institute for Integrative Genomics, Princeton University, Princeton, New Jersey, United States of America<br/>
+          </p>
+          </article>
+          
+      </section>
+      <!-- Contact -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="row">
+          <div class="col-6 col-12-small">
+            <ul class="labeled-icons">
+              <li>
+                <h3 class="icon solid fa-home">
+                  <span class="label">Address</span>
+                </h3>
+                <a href="http://flatironinstitute.org">Flatiron Institute</a
+                ><br />
+                162 Fifth Avenue<br />
+                New York, NY 10010<br />
+                United States
+              </li>
+              <li>
+                <h3 class="icon solid fa-envelope">
+                  <span class="label">Email</span>
+                </h3>
+                <!-- TODO: Add email -->
+                <a href="mailto:USER_EMAIL"
+                  >hnunley at flatironinstitute.org.</a
+                >
+              </li>
+            </ul>
+            <ul class="icons">
+              <!-- TODO: Add your social media handles here -->
+              <!-- Other icons are available here: https://fontawesome.com/v4.7/icons/ just change the fa-tag -->
+              <li>
+                <a href="#" class="icon brands fa-twitter"
+                  ><span class="label">Twitter</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-github"
+                  ><span class="label">Github</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-instagram"
+                  ><span class="label">Instagram</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-facebook"
+                  ><span class="label">Facebook</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-vimeo"
+                  ><span class="label">Vimeo</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <a
+          href="https://www.simonsfoundation.org/flatiron/"
+          class="image logo"
+          target="_blank"
+          id="logo"
+          rel="noreferrer noopener"
+        >
+          <img src="images/logo.svg" alt="logo" id="logo-icon" />
+        </a>
+      </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.poptrox.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- TODO: Remove if not using Mathjax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </body>
+</html>
