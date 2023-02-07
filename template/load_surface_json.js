@@ -35,7 +35,7 @@ var datasets = [
         json: "json/F49_148.json",
         id: "F49_148",
         series: "F49",
-        timestamp: "8",
+        timestamp: "148",
         description: "64 nucleus stage",
     },
     {
@@ -111,8 +111,9 @@ var setup_json = function(data) {
 };
 
 var setup_series = function(data) {
+    var no_download = true;
     info.html("series loaded.");
     series_json_data = data;
     var target_div = $("#volumes");
-    focus_on_timestamp(focus_series, focus_timestamp, target_div, data);
+    focus_on_timestamp(focus_series, focus_timestamp, target_div, data, no_download);
 };
