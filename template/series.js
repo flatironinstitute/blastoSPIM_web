@@ -101,7 +101,7 @@ var ts_callback = function(series_name, ts_num) {
     }
 };
 
-var focus_on_timestamp = function(series_name, ts_num, target_div, series_json) {
+var focus_on_timestamp = function(series_name, ts_num, target_div, series_json, no_download) {
     target_div = target_div || timestamp_detail;
     series_json = series_json || json_data;
     if (timestamp_header) {
@@ -117,8 +117,10 @@ var focus_on_timestamp = function(series_name, ts_num, target_div, series_json) 
     var mfn = ts_root + "max_intensity_volume.bin";
     target_div.empty();
     var data_path = ts_source + `${series_name}_${ts_num}.npz`;
-    $(`<a href="${data_path}" style="color:blue">Download \u21d3 ${series_name}/${ts_num} </a>`).
-        appendTo(target_div);
+    if (!no_download) {
+        $(`<a href="${data_path}" style="color:blue">Download \u21d3 ${series_name}/${ts_num} </a>`).
+            appendTo(target_div);
+    }
     var ts_row = $("<div/>").appendTo(target_div);
     ts_row.css({"display": "flex", "flex-flow": "row", "margin": "5px"});
     var slider_wrap = $("<div/>").appendTo(ts_row);
