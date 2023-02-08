@@ -22,6 +22,7 @@ import shutil
 
 # pseudocolor flag
 PSEUDOCOLOR = False
+ENHANCE = False
 
 def run():
     import sys
@@ -187,7 +188,10 @@ class TimeStamp:
         #bint = blur(mint)
         bint = mint
         #mint256 = scale256(bint)
-        mint256 = enhance_contrast(bint)
+        if ENHANCE:
+            mint256 = enhance_contrast(bint)
+        else:
+            mint256 = scale256(bint)
         ifn = os.path.join(ts_folder, "max_intensity_image.png")
         if not PSEUDOCOLOR:
             imsave(ifn, mint256)
