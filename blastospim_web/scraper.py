@@ -39,19 +39,27 @@ def run():
     return scrape(from_path, to_path, json_filename)
 
 def scrape(from_path, to_path, json_filename):
-    ts_folders = os.listdir(from_path)
+    return scrape_all([from_path], to_path, json_filename)
+
+def scrape_all(from_paths, to_path, json_filename):
     sequence = SeriesSequence(to_path, json_filename)
-    for ts_folder in ts_folders:
-        ts_path = os.path.join(from_path, ts_folder)
-        assert os.path.isdir(ts_path), "not a folder: " + ts_path
-        [series_name, ts_str] = ts_folder.split("_")
-        idx = int(ts_str)
-        ts = sequence.get_timestamp(series_name, idx, ts_path)
-        print("created", ts)
-        labels = ts.labels_array()
-        print("labels", labels.dtype, labels.shape)
-        img = ts.img_array()
-        print("img", img.dtype, img.shape)
+    for from_path in from_paths:
+        print()
+        print("SCRAPING", from_path)
+        ts_folders = os.listdir(from_path)
+        #sequence = SeriesSequence(to_path, json_filename)
+        for ts_folder in ts_folders:
+            ts_path = os.path.join(from_path, ts_folder)
+            assert os.path.isdir(ts_path), "not a folder: " + ts_path
+            [series_name, ts_str] = ts_folder.split("_")
+            idx = int(ts_str)
+            ts = sequence.get_timestamp(series_name, idx, ts_path)
+            print("created", ts)
+            labels = ts.labels_array()
+            print("labels", labels.dtype, labels.shape)
+            img = ts.img_array()
+            print("img", img.dtype, img.shape)
+    print()
     print("now populating")
     sequence.populate_to_path(json_filename)
 
@@ -209,9 +217,14 @@ class TimeStamp:
         mvfn = os.path.join(ts_folder, "max_intensity_volume.bin")
         #mvol256 = scale256(mvolume)
         # enhance contrast for each layer of mvolume independently
-        mvol256 = np.zeros(mvolume.shape, dtype=np.ubyte)
-        for i in range(len(mvolume)):
-            mvol256[i] = enhance_contrast(mvolume[i])
+        if ENHANCE:
+            mvol256 = np.zeros(mvolume.shape, dtype=np.ubyte)
+            for i in range(len(mvolume)):
+                mvol256[i] = enhance_contrast(mvolume[i])
+        else:
+            mvol256 = np.zeros(mvolume.shape, dtype=np.ubyte)
+            for i in range(len(mvolume)):
+                mvol256[i] = scale256(mvolume[i])
         if not PSEUDOCOLOR:
             save_binary(mvol256, mvfn)
         else:
