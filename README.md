@@ -90,7 +90,7 @@ $ python3 -m http.server
 Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
 ```
 
-Then navigate to the website root at `http://0.0.0.0/8000/.../blastospim_web/template`.
+Then navigate to the website root at `http://localhost:8000/.../blastospim_web/template`.
 
 For development purposes the web site `template` files may be editted and reloaded in place
 without rerunning the preprocessor.  You only need to rerun the preprocessor if the data formats
@@ -102,9 +102,10 @@ The following command will preprocess all source data on `rusty` and install
 the development website code.
 
 ```bash
+$ srun -N1 --pty bash -i
 $ cd blastospim_web
 $ cd scripts
-$ python make_rusty_site.py
+$ nohup python -u make_rusty_site.py &
 ```
 
 The data processing takes a while.
