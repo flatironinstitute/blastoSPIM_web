@@ -9,7 +9,7 @@ from_folders = [
 ]
 # new folder
 from_folders = [
-    "/mnt/ceph/users/hnunley/Labels3DMouse/GTSets/2023_Full'",
+    "/mnt/ceph/users/hnunley/Labels3DMouse/GTSets/2023_Full",
 ]
 to_folder = "/mnt/ceph/users/awatters/blastospim/website"
 
