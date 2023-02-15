@@ -14,14 +14,14 @@ var datasets = [
         json: "json/F27_4.json",
         id: "F27_4",
         series: "F27",
-        timestamp: "4",
+        timestamp: "004",
         description: "8 nuclei stage",
     },
     {
         json: "json/F33_67.json",
         id: "F33_67",
         series: "F33",
-        timestamp: "67",
+        timestamp: "067",
         description: "16 nuclei stage",
     },
     {
