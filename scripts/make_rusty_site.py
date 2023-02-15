@@ -23,7 +23,7 @@ def make_test_site(from_folders=from_folders, to_folder=to_folder):
     print ("PLEASE INSTALL model.tar.gz MANUALLY.")
     install_web_infrastructure()
 
-def install_web_infrastructure(from_folder=from_folder, to_folder=to_folder):
+def install_web_infrastructure(from_folder=from_folders, to_folder=to_folder):
     src = "../template"
     dst_folder = "html"
     dst_path = os.path.join(to_folder, dst_folder)
