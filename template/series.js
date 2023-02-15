@@ -101,8 +101,16 @@ var ts_callback = function(series_name, ts_num) {
     }
 };
 
+var ts_info = function(series_name, ts_num, series) {
+    if (!series) {
+        series = json_data.series[series_name];
+    }
+    return series.timestamps[ts_num];
+};
+
 var focus_on_timestamp = function(series_name, ts_num, target_div, series_json, no_download) {
     target_div = target_div || timestamp_detail;
+    ts_num = parseInt("" + ts_num);
     series_json = series_json || json_data;
     if (timestamp_header) {
         timestamp_header.html(`Timestamp ${ts_num} in series ${series_name}`);
@@ -111,12 +119,13 @@ var focus_on_timestamp = function(series_name, ts_num, target_div, series_json, 
     var ts = series.timestamps[ts_num];
     var shape = ts.shape;
     var depth = shape[0];
-    var ts_root = DATA_WEB + series_name + "/" + ts_num + "/";
+    var ts_name = ts_info(series_name, ts_num, series).ts_str;
+    var ts_root = DATA_WEB + series_name + "/" + ts_name + "/";
     var ts_source = DATA_SOURCE + series_name + "/";
     var efn = ts_root + "extruded_volume.bin";
     var mfn = ts_root + "max_intensity_volume.bin";
     target_div.empty();
-    var data_path = ts_source + `${series_name}_${ts_num}.npz`;
+    var data_path = ts_source + `${series_name}_${ts_name}.npz`;
     if (!no_download) {
         $(`<a href="${data_path}" style="color:blue">Download \u21d3 ${series_name}/${ts_num} </a>`).
             appendTo(target_div);
@@ -179,7 +188,8 @@ var add_ts_summary = function(div, series_name, ts_num) {
     if (!ts_num) {
         ts_num = json_data.series[series_name].timestamp_order[0];
     }
-    var ts_root = DATA_WEB + series_name + "/" + ts_num + "/";
+    var ts_name = ts_info(series_name, ts_num).ts_str;
+    var ts_root = DATA_WEB + series_name + "/" + ts_name + "/";
     var labels_image = ts_root + "extruded_colorized_labels.png";
     var intensity_image = ts_root + "max_intensity_image.png";
     var summary = $("<div/>").appendTo(div);
