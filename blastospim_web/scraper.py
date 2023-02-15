@@ -11,6 +11,9 @@ $ python scraper.py FROM_PATH TO_PATH JSON_FILENAME.json
 # todo:
 # - dump json manifest to correct file
 
+# disable tar file for now
+DO_TAR = False
+
 import os
 import glob
 from subprocess import check_output
@@ -51,14 +54,18 @@ def scrape_all(from_paths, to_path, json_filename):
         for ts_folder in ts_folders:
             ts_path = os.path.join(from_path, ts_folder)
             assert os.path.isdir(ts_path), "not a folder: " + ts_path
-            [series_name, ts_str] = ts_folder.split("_")
-            idx = int(ts_str)
-            ts = sequence.get_timestamp(series_name, idx, ts_path)
-            print("created", ts)
-            labels = ts.labels_array()
-            print("labels", labels.dtype, labels.shape)
-            img = ts.img_array()
-            print("img", img.dtype, img.shape)
+            splitpath = ts_folder.split("_")
+            if len(splitpath) != 2:
+                print ("WARNING: IGNORING PATH", ts_path, splitpath)
+            else:
+                [series_name, ts_str] = ts_folder.split("_")
+                idx = int(ts_str)
+                ts = sequence.get_timestamp(series_name, idx, ts_path, ts_str)
+                print("created", ts)
+                labels = ts.labels_array()
+                print("labels", labels.dtype, labels.shape)
+                img = ts.img_array()
+                print("img", img.dtype, img.shape)
     print()
     print("now populating")
     sequence.populate_to_path(json_filename)
@@ -81,10 +88,13 @@ class SeriesSequence:
         json.dump(json_manifest, f, indent=1)
         print("wrote manifest to", json_path)
         f.close()
-        print("tarring source files")
-        cmd = 'cd "%s"; tar -cvf source.tar source' % self.to_path
-        print("::", cmd)
-        os.system(cmd)
+        if DO_TAR:
+            print("tarring source files")
+            cmd = 'cd "%s"; tar -cvf source.tar source' % self.to_path
+            print("::", cmd)
+            os.system(cmd)
+        else:
+            print("No tar archive: disabled.")
 
     def check_to_path(self):
         p = self.to_path
@@ -99,9 +109,9 @@ class SeriesSequence:
         result = n2s[name] = n2s.get(name, Series(name))
         return result
 
-    def get_timestamp(self, name, idx, folder):
+    def get_timestamp(self, name, idx, folder, ts_str):
         series = self.get_series(name)
-        return series.get_timestamp(name, idx, folder)
+        return series.get_timestamp(name, idx, folder, ts_str)
 
     def json_manifest(self):
         n2s = self.name_to_series
@@ -135,9 +145,9 @@ class Series:
             print("   ", source_folder, web_folder, idx)
             ts.save_summary(source_folder, web_folder)
 
-    def get_timestamp(self, series_name, idx, folder):
+    def get_timestamp(self, series_name, idx, folder, ts_str):
         i2s = self.index_to_timestamp
-        result = i2s[idx] = i2s.get(idx, TimeStamp(series_name, idx, folder))
+        result = i2s[idx] = i2s.get(idx, TimeStamp(series_name, idx, folder, ts_str))
         return result
 
     def json_manifest(self):
@@ -154,17 +164,18 @@ class Series:
 
 class TimeStamp:
 
-    def __init__(self, series_name, idx, folder):
+    def __init__(self, series_name, idx, folder, ts_str):
         self.series_name = series_name
         self.idx = idx
+        self.ts_str = ts_str
         self.folder = folder
         self.save_folder = None
 
     def __repr__(self):
-        return "TS" + repr((self.series_name, self.idx, self.folder))
+        return "TS" + repr((self.series_name, self.ts_str, self.folder))
 
     def save_summary(self, source_folder, web_folder):
-        ts_folder = os.path.join(web_folder, str(self.idx))
+        ts_folder = os.path.join(web_folder, self.ts_str)
         self.save_folder = ts_folder
         print("      ", ts_folder)
         if os.path.exists(ts_folder):
@@ -174,7 +185,7 @@ class TimeStamp:
         labels = self.labels_array()
         img = self.img_array()
         #self.data_shape = img.shape
-        fn = "%s_%s" % (self.series_name, self.idx)
+        fn = "%s_%s" % (self.series_name, self.ts_str)
         fpath = os.path.join(source_folder, fn)
         np.savez(fpath, img=img, labels=labels)
         self.data_path = fn
@@ -237,6 +248,7 @@ class TimeStamp:
         return dict(
             series=self.series_name,
             idx=self.idx,
+            ts_str=self.ts_str,
             source_folder=self.folder,
             save_folder=self.save_folder,
             data_path=self.data_path,
@@ -244,11 +256,11 @@ class TimeStamp:
             max_intensity_path=self.max_intensity_path,
             shape=self.data_shape,
             extruded_volume=self.extruded_volume,
-            max_intensity_volume=self.max_intensity_volume
+            max_intensity_volume=self.max_intensity_volume,
         )
 
     def labels_array(self):
-        pname = "%s_%s" % (self.series_name, self.idx)
+        pname = "%s_%s" % (self.series_name, self.ts_str)
         glob_pattern = "%s/%s/masks/*_masks_*.npy" % (self.folder, pname,)
         files = glob.glob(glob_pattern)
         assert len(files) == 1, "should have one file: " + repr((glob_pattern, files, self))
@@ -257,7 +269,7 @@ class TimeStamp:
         return labels
 
     def img_array(self):
-        pname = "%s_%s" % (self.series_name, self.idx)
+        pname = "%s_%s" % (self.series_name, self.ts_str)
         glob_pattern = "%s/%s/images/*_image_*.npy" % (self.folder, pname,)
         files = glob.glob(glob_pattern)
         assert len(files) == 1, "should have one file: " + repr((glob_pattern, files, self))
