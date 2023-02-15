@@ -1,18 +1,25 @@
 
-from blastospim_web.scraper import scrape
+from blastospim_web.scraper import scrape_all
 import os
 import shutil
 
-from_folder = "/mnt/ceph/users/lbrown/Labels3DMouse/GTSets/2022_Full"
+# old folder
+from_folders = [
+    "/mnt/ceph/users/lbrown/Labels3DMouse/GTSets/2022_Full",
+]
+# new folder
+from_folders = [
+    "/mnt/ceph/users/hnunley/Labels3DMouse/GTSets/2023_Full'",
+]
 to_folder = "/mnt/ceph/users/awatters/blastospim/website"
 
-def make_test_site(from_folder=from_folder, to_folder=to_folder):
+def make_test_site(from_folders=from_folders, to_folder=to_folder):
     data_path = os.path.join(to_folder, "data")
     if not os.path.isdir(to_folder):
         os.makedirs(to_folder)
     # install the data files
     json_filename = os.path.join(data_path, "manifest.json")
-    scrape(from_folder, data_path, json_filename)
+    scrape_all(from_folders, data_path, json_filename)
     print ("PLEASE INSTALL model.tar.gz MANUALLY.")
     install_web_infrastructure()
 
