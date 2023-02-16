@@ -73,11 +73,17 @@
           Robust 3D Nuclear Instance Segmentation of the Early Mouse Embryo
         </h1>
         <p>
-          We introduce a new dataset and model of pre-implantation mouse embryos with 
-          complete 3D instance segmentation of nuclei. This is one of the largest and 
-          most complete datasets of its kind with over 570 high resolution images from 
-          a light sheet microscope. Each image has a resolution of roughly 64x512x512 and 
-          every nucleus in each image is fully annotated in 3D by a series of contours in each slice.
+          We introduce new ground truth datasets of 3D nuclear instance segmentation 
+          in pre-implantation mouse embryos as well as models trained on those datasets. 
+          One ground truth dataset (BlastoSPIM 1.0) is primarily composed of embryos from 
+          the 8-nuclei stage to the 64-nuclei stage. The other ground truth dataset 
+          (BlastoSPIM 2.0) is primarily composed of embryos from the 64-nuclei stage 
+          to the >100-nuclei stage. BlastoSPIM 1.0 and 2.0 are two of the largest and 
+          most complete datasets of their kind with 573 and 80 annotated light-sheet 
+          images, respectively. Each image has an xy-resolution of 0.208 micron and a 
+          z-resolution of 2.0 microns. For each of the 18336 nuclei 
+          across the two datasets, the ground-truth instance is 
+          defined by drawing a contour in each z-slice in which the nucleus appears.
       </p>
 
       <p>
