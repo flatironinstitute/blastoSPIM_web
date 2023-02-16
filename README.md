@@ -108,6 +108,12 @@ $ cd scripts
 $ nohup python -u make_rusty_site.py &
 ```
 
+```bash
+$ module load slurm
+$ module load disBatch
+$ sbatch -n 1 --ntasks-per-node 1 --wrap "disBatch.py job.sh"
+```
+
 The data processing takes a while.
 
 # Install just the HTML/CSS and Javascript in development
