@@ -45,6 +45,13 @@ var datasets = [
         timestamp: "171",
         description: "128 nuclei stage",
     },
+    {
+        json: "json/Blast_004.json",
+        id: "Blast_004",
+        series: "Blast",
+        timestamp: "004",
+        description: "128 nuclei stage",
+    },
 ];
 
 function load_segmentations() {
