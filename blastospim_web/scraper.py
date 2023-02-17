@@ -25,7 +25,7 @@ import shutil
 
 # pseudocolor flag
 PSEUDOCOLOR = False
-ENHANCE = False
+ENHANCE = True
 
 def run():
     import sys
@@ -302,7 +302,7 @@ def save_binary(array, to_fn):
 def blur(img, sigma=2):
     return gaussian_filter(img, sigma=sigma)
 
-def enhance_contrast(img, cutoff=0.1):
+def enhance_contrast(img, cutoff=0.06):
     (unique, count) = np.unique(img, return_counts=True)
     size = img.size
     def breakpoint(delta):
