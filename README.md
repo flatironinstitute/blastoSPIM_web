@@ -8,6 +8,9 @@ with Javascript readable data files generated from source data in a preprocessin
 <a href="https://users.flatironinstitute.org/~awatters/blastospim/html/">
 The top level directory for the site is currently located at
 https://users.flatironinstitute.org/~awatters/blastospim/html/ . </a>
+The live link is
+<a href="https://blastospim.flatironinstitute.org/html/">
+https://blastospim.flatironinstitute.org/html/</a>
 
 # Development install
 
